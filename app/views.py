@@ -56,8 +56,8 @@ class ResponseView(APIView):
             'current_day': current_day_of_week,
             "utc_time": formatted_utc_time,
             'track': track,
-            "github_file_url": "https://github.com/username/repo/blob/main/file_name.ext",
-            "github_repo_url": "https://github.com/username/repo",
+            "github_file_url": "https://github.com/supershegs/testingResponse/blob/main/app/urls.py",
+            "github_repo_url": "https://github.com/supershegs/testingResponse.git",
             "status_code": 200,
         }
 

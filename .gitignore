@@ -1,1 +1,5 @@
 env
+.env
+Procfile
+runtime.txt
+requirements.txt

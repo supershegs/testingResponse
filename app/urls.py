@@ -5,5 +5,5 @@ from .views import ResponseView
 
 
 urlpatterns = [
-    path('grade', ResponseView.as_view()),   
+    path('api', ResponseView.as_view()),   
 ]

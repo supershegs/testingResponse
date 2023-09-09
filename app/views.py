@@ -7,7 +7,12 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from django.utils.decorators import method_decorator
 
-from .c_date import current_day_of_week,formatted_utc_time
+from .c_date import current_day_of_week
+
+import pytz
+from datetime import datetime, timedelta
+
+# Inside your view
 
 
 # Create your views here.
@@ -50,6 +55,13 @@ class ResponseView(APIView):
         
         if slack_name is None or track is None:
             return Response({'error': 'Both slack_name and track parameters are required.'}, status=400)
+        
+        # for real utc_time update will not be importing formatted_utc_time from c_date
+        utc_timezone = pytz.timezone('UTC')
+        current_utc_time = datetime.now(utc_timezone)
+        one_hour_later = current_utc_time + timedelta(hours=1)
+        formatted_utc_time = one_hour_later.strftime('%Y-%m-%dT%H:%M:%SZ')
+
 
         response_data = {
             'slack_name': slack_name,
@@ -60,5 +72,4 @@ class ResponseView(APIView):
             "github_repo_url": "https://github.com/supershegs/testingResponse.git",
             "status_code": 200,
         }
-
         return Response(response_data)

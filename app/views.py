@@ -59,8 +59,9 @@ class ResponseView(APIView):
         # for real utc_time update will not be importing formatted_utc_time from c_date
         utc_timezone = pytz.timezone('UTC')
         current_utc_time = datetime.now(utc_timezone)
-        one_hour_later = current_utc_time + timedelta(hours=1)
-        formatted_utc_time = one_hour_later.strftime('%Y-%m-%dT%H:%M:%SZ')
+        # one_hour_later = current_utc_time + timedelta(hours=1)
+        # formatted_utc_time = one_hour_later.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted_utc_time = current_utc_time.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
         response_data = {
